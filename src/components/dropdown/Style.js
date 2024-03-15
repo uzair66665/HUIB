@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     position: "absolute",
-    height: hp(30),
+    maxHeight: hp(17),
     borderWidth: 1,
     borderColor: colors.black,
   },

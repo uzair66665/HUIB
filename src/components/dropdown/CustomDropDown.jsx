@@ -25,6 +25,9 @@ const CustomDropDown = (props) => {
     setshowOption(false);
     props.onSelect(item);
   };
+  let text = props?.value?.Actions
+    ? props.value.LowerRange + "-" + props.value.UpperRange
+    : props.value;
   return (
     <View>
       <TouchableOpacity
@@ -33,7 +36,7 @@ const CustomDropDown = (props) => {
         onPress={() => setshowOption(!showOption)}
       >
         {!!props.value ? (
-          <Text style={styles.text}>{props.value.name}</Text>
+          <Text style={styles.text}>{text}</Text>
         ) : (
           <Text style={styles.text}>Select</Text>
         )}
@@ -48,21 +51,26 @@ const CustomDropDown = (props) => {
           <View style={styles.listContainer}>
             <NestableScrollContainer
               nestedScrollEnabled={true}
-              contentContainerStyle={{ zIndex: 1000 }}
+              contentContainerStyle={{}}
             >
               {props.data.length === 0 ? (
                 <Text style={styles.noDataText}>No data found</Text>
               ) : (
-                props.data.map((item, i) => (
-                  <TouchableOpacity
-                    key={i}
-                    activeOpacity={2.8}
-                    onPress={() => onSelectedItem(item)}
-                    style={styles.listButtons}
-                  >
-                    <Text style={styles.text}>{item.name}</Text>
-                  </TouchableOpacity>
-                ))
+                props.data.map((item, i) => {
+                  let itemText = item?.Actions
+                    ? item.LowerRange + "-" + item.UpperRange
+                    : item;
+                  return (
+                    <TouchableOpacity
+                      key={i}
+                      activeOpacity={2.8}
+                      onPress={() => onSelectedItem(item)}
+                      style={styles.listButtons}
+                    >
+                      <Text style={styles.text}>{itemText}</Text>
+                    </TouchableOpacity>
+                  );
+                })
               )}
             </NestableScrollContainer>
           </View>

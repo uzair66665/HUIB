@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: wp(5),
+    zIndex: -20000,
   },
   button: {
     borderColor: colors.add,

@@ -8,3 +8,5 @@ export const colors = {
   red: "#FF0000",
   green: "#00B050",
 };
+
+export const BACKEND_URL = "https://metroappgateway.azurewebsites.net/hubtemp";
